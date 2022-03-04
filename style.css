@@ -1,5 +1,46 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
+
+html {
+    font-family: sans-serif;
+}
+
+main {
+	width: min(800px, 80%);
+    margin: 5rem auto;
+    border: 1px lightgray solid;
+    border-radius: 10px;
+    text-align: center;
+    padding: 3em 0;
+    min-height: 800px;
+}
+
+.play,
+.reset {
+    display: inline-block;
+    margin: 2em 0;
+    padding: 1em 2em;
+    background-color: lightblue;
+    border: 1px skyblue solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.play:active {
+    background-color: skyblue;
+}
+
+.given-numbers,
+.numbers-prompt {
+    min-height: 200px;
+}
+
+
+
