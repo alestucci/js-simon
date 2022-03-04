@@ -9,22 +9,56 @@ html {
 }
 
 body {
-    background-color: lightgray;
+	background-color: lightgray;
 }
 
 main {
 	width: min(800px, 80%);
-    background-color: white;
+	background-color: white;
 	margin: 5rem auto;
 	border: 1px grey solid;
 	border-radius: 20px;
 	text-align: center;
 	padding: 3em 0;
-    box-shadow: 0px 15px 15px 10px rgba(143,143,143,0.75);
+	box-shadow: 0px 15px 15px 10px rgba(143, 143, 143, 0.75);
 }
 
 h1 {
-    font-size: 60px;
+	font-size: 60px;
+}
+
+.display-none {
+	display: none;
+}
+
+.bg-green {
+	background-color: lightseagreen;
+	color: black;
+}
+
+.bg-red {
+	background-color: crimson;
+	color: white;
+}
+
+.top {
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.center {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100px;
 }
 
 .play,
@@ -40,14 +74,13 @@ h1 {
 
 .hidden {
 	opacity: 0;
-    cursor: default;
+	cursor: default;
 }
 
 .inactive {
-    display: inline-block;
+	display: inline-block;
 	padding: 1em 2em;
 	background-color: lightgray;
-	/* color: lightblue; */
 	border: 1px grey solid;
 	border-radius: 10px;
 	cursor: default;
@@ -62,70 +95,36 @@ h1 {
 .given-numbers,
 .numbers-prompt {
 	min-height: 150px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 0 25px;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 0 25px;
 }
 
 .box,
 .prompt {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    background-color: lightyellow;
-    border: 1px black solid;
-    border-radius: 10px;
-    width: 60px;
-    height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	background-color: lightyellow;
+	border: 1px black solid;
+	border-radius: 10px;
+	width: 60px;
+	height: 60px;
 }
 
 .prompt {
-    text-align: center;
+	text-align: center;
 }
 
 .message {
-    font-size: 60px;
-    color: crimson;
+	font-size: 60px;
+	color: crimson;
 }
 
 .score {
-    font-size: 60px;
-    color: orangered;
-}
-
-.display-none {
-    display: none;
-}
-
-.bg-green {
-    background-color: lightseagreen;
-    color: black;
-}
-
-.bg-red {
-    background-color: crimson;
-    color: white;
-}
-
-.top {
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100px;
-}
-
-.center {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+	font-size: 60px;
+	color: orangered;
 }
