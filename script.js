@@ -14,10 +14,11 @@ checkBtn.addEventListener("click", checkValues);
 const resetBtn = document.querySelector(".reset");
 resetBtn.addEventListener("click", reloadPage);
 
+const messageBox = document.querySelector(".given-numbers");
+//console.log(messageBox);
+
 function hideNumbers() {
 	// console.log("qui nascondo i numeri");
-	const messageBox = document.querySelector(".given-numbers");
-	//console.log(messageBox);
 	messageBox.innerHTML = "";
 	const message = document.createElement("div");
 	message.classList.add("message");
@@ -29,19 +30,33 @@ function hideNumbers() {
 }
 
 function checkValues() {
-	checkBtn.classList = "inactive";
-	checkBtn.removeEventListener("click", checkValues);
-	for (let i = 0; i < inputBox.length; i++) {
-		inputBox[i].disabled = !inputBox[i].disabled;
-	}
 	let result = 0;
 	for (let i = 0; i < inputBox.length; i++) {
-		if (numbersGiven.includes(inputBox[i].value)) {
-		result++
-        console.log('giuste: ' + result);
-        }
+		if (isNaN(parseInt(inputBox[i].value))) {
+            messageBox.innerHTML = "";
+			const message = document.createElement("div");
+			message.classList.add("message");
+			message.innerHTML = "&#128308; Insert valid numbers &#128308;";
+			messageBox.append(message);
+		} else {
+            inputBox[i].disabled = !inputBox[i].disabled;
+            if (numbersGiven.includes(parseInt(inputBox[i].value))) {
+                inputBox[i].classList.add("bg-green");
+				result++;
+			} else {
+                inputBox[i].classList.add("bg-red");
+			}
+            console.log(result);
+            resetBtn.classList.toggle("hidden");
+            messageBox.innerHTML = "";
+            const message = document.createElement("div");
+            message.classList.add("score");
+            message.innerHTML = `Score: ${result} / 5`;
+            messageBox.append(message);
+            checkBtn.classList = "inactive";
+            checkBtn.removeEventListener("click", checkValues);
+		}
 	}
-	resetBtn.classList.toggle("hidden");
 }
 
 function showFields() {
@@ -79,14 +94,14 @@ function randomFiveNumbersGenerator() {
 	}
 
 	playBtn.removeEventListener("click", randomFiveNumbersGenerator);
-
-	setTimeout(hideNumbers, 1000);
-	setTimeout(showFields, 1000);
+	//3 secondi al posto di 30 perché sono un'eternità
+	setTimeout(hideNumbers, 3000);
+	setTimeout(showFields, 3000);
 }
 
 function reloadPage() {
-    for (let input = 0; input < inputBox.length; input++) {
-        inputBox[input].value = "";
-    }
+	for (let input = 0; input < inputBox.length; input++) {
+		inputBox[input].value = "";
+	}
 	location.reload();
 }
