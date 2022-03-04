@@ -1,19 +1,15 @@
-//Click sul bottone crea 5 numeri casuali (da 1 a 100??) non ripetuti
 const playBtn = document.querySelector(".play");
-console.log(playBtn);
+//console.log(playBtn);
 const numbersGiven = [];
 
+const inputBox = [...document.querySelectorAll(".prompt")];
+
 playBtn.addEventListener("click", randomFiveNumbersGenerator);
-// playBtn.addEventListener("click", startTimeout);
+
 playBtn.addEventListener("click", deactivateBtn);
 
-//i numeri vengono mostrati a video per 30 secondi (le prove le faremo con 3 secondi)
-//playBtn.addEventListener('click', numbersShow);
-
-// dopo i 30 secondi i numeri scompaiono e compaiono 5 campi per l'inserimento dei numeri
-//playBtn.addEventListener('click', timerThirtySec);
-
-//dopo aver inserito i 5 numeri il programma controlla quanti e quali siano esatti
+const checkBtn = document.querySelector(".check");
+checkBtn.addEventListener("click", checkValues);
 
 const resetBtn = document.querySelector(".reset");
 resetBtn.addEventListener("click", reloadPage);
@@ -21,7 +17,7 @@ resetBtn.addEventListener("click", reloadPage);
 function hideNumbers() {
 	// console.log("qui nascondo i numeri");
 	const messageBox = document.querySelector(".given-numbers");
-	console.log(messageBox);
+	//console.log(messageBox);
 	messageBox.innerHTML = "";
 	const message = document.createElement("div");
 	message.classList.add("message");
@@ -32,16 +28,29 @@ function hideNumbers() {
 	//message.classList.toggle("display-none");
 }
 
+function checkValues() {
+	checkBtn.classList = "inactive";
+	checkBtn.removeEventListener("click", checkValues);
+	for (let i = 0; i < inputBox.length; i++) {
+		inputBox[i].disabled = !inputBox[i].disabled;
+	}
+	let result = 0;
+	for (let i = 0; i < inputBox.length; i++) {
+		if (numbersGiven.includes(inputBox[i].value)) {
+		result++
+        console.log('giuste: ' + result);
+        }
+	}
+	resetBtn.classList.toggle("hidden");
+}
+
 function showFields() {
 	const inputBox = [...document.querySelectorAll(".prompt")];
-	console.log(inputBox);
+	//console.log(inputBox);
 	for (let i = 0; i < inputBox.length; i++) {
 		inputBox[i].classList.toggle("display-none");
 	}
-	const checkBtn = document.querySelector(".check");
-	console.log(checkBtn);
-    checkBtn.classList.toggle('hidden');
-	checkBtn.addEventListener("click", prova);
+	checkBtn.classList.toggle("hidden");
 }
 
 function deactivateBtn() {
@@ -49,15 +58,11 @@ function deactivateBtn() {
 	this.innerHTML = "Playing...";
 }
 
-function prova() {
-	console.log("la funzione prova viene avviata correttamente");
-}
-
 function randomFiveNumbersGenerator() {
 	// const numbersGiven = [];
 	while (numbersGiven.length < 5) {
 		let randomNum = Math.floor(Math.random() * 99 + 1);
-		console.log(randomNum);
+		//console.log(randomNum);
 		if (numbersGiven.indexOf(randomNum) == -1) {
 			numbersGiven.push(randomNum);
 		}
@@ -65,7 +70,7 @@ function randomFiveNumbersGenerator() {
 	console.log(numbersGiven);
 
 	const numbersShow = document.querySelector(".given-numbers");
-	console.log(numbersShow);
+	//console.log(numbersShow);
 	for (let i = 0; i < numbersGiven.length; i++) {
 		let box = document.createElement("div");
 		box.classList.add("box");
@@ -80,5 +85,8 @@ function randomFiveNumbersGenerator() {
 }
 
 function reloadPage() {
+    for (let input = 0; input < inputBox.length; input++) {
+        inputBox[input].value = "";
+    }
 	location.reload();
 }
