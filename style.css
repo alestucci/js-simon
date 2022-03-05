@@ -119,6 +119,20 @@ h1 {
 	text-align: center;
 }
 
+.display-none {
+	display: none;
+}
+
+.bg-green {
+	background-color: lightseagreen;
+	color: black;
+}
+
+.bg-red {
+	background-color: crimson;
+	color: white;
+}
+
 .message {
 	font-size: 60px;
 	color: crimson;
